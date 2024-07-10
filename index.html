@@ -1,30 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання</title>
 </head>
 <body>
-  <script>
-let result = 5 + 5 + '5';
-console.log(typeof result);
+    <!-- Завдання -->
+    <button id="helloButton">Click me!</button>
+    <br><br>
 
-let email = 'example@example.com';
-let symbolCount = email.includes('@') ? email.length : 0;
-let indexOfSymbol = email.indexOf('@');
-console.log(symbolCount);
-console.log(indexOfSymbol);
+    <!-- Завдання -->
+    <input type="number" id="guessInput" placeholder="Введіть число від 1 до 100">
+    <button id="checkGuessButton">Перевірити</button>
+    <p id="guessResult"></p>
+    <br><br>
 
-let word1 = 'My';
-let word2 = 'name';
-let word3 = 'is';
-let fullName = word1 + ' ' + word2 + ' ' + word3 + ' Viktor';
-console.log(fullName);
+    <!-- Завдання -->
+    <p>Ви клікнули <span id="clickCount">0</span> разів на сторінці.</p>
+    <br><br>
 
-let userName = 'Олександро';
-let payment = 300;
-alert(`Дякуємо, ${userName}! До сплати ${payment} гривень`);
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
