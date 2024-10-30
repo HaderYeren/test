@@ -1,39 +1,26 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homework</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <h1>Bank Account</h1>
-    <p>Owner: <span id="ownerName"></span></p>
-    <p>Account Number: <span id="accountNumber"></span></p>
-    <p>Balance: <span id="balance"></span></p>
-    <button onclick="deposit()">Поповнити рахунок</button>
-    <button onclick="withdraw()">Отримати готівку</button>
+  <ul class="js-gallery gallery"></ul>
+  <div class="lightbox js-lightbox">
+    <div class="lightbox__overlay"></div>
+    <div class="lightbox__content">
+      <img class="lightbox__image" src="" alt="" />
+      <button
+        type="button"
+        class="lightbox__button"
+        data-action="close-lightbox">
+        Закрыть
+      </button>
+    </div>
+  </div>
 
-    <h1>Weather</h1>
-    <label for="temperature">Temperature (°C): </label>
-    <input type="number" id="temperature">
-    <button onclick="checkTemperature()">Перевірити температуру</button>
-    <p id="weatherMessage"></p>
-
-    <h1>User Login</h1>
-    <label for="email">Email: </label>
-    <input type="email" id="email">
-    <label for="password">Password: </label>
-    <input type="password" id="password">
-    <button onclick="login()">Login</button>
-    <p id="loginMessage"></p>
-
-    <h1>Movie</h1>
-    <p>Title: <span id="title"></span></p>
-    <p>Director: <span id="director"></span></p>
-    <p>Year: <span id="year"></span></p>
-    <p>Rating: <span id="rating"></span></p>
-    <button onclick="checkRating()">Check Rating</button>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
