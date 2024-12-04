@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .image-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  img {
+    height: 200px;
+    width: auto;
+    background-color: #f0f0f0;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+  }
+  
+  img.loaded {
+    opacity: 1;
+  }
+  

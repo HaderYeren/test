@@ -1,26 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gallery</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <ul class="js-gallery gallery"></ul>
-  <div class="lightbox js-lightbox">
-    <div class="lightbox__overlay"></div>
-    <div class="lightbox__content">
-      <img class="lightbox__image" src="" alt="" />
-      <button
-        type="button"
-        class="lightbox__button"
-        data-action="close-lightbox">
-        Закрыть
-      </button>
-    </div>
+  <h1>Лінійне завантаження зображень</h1>
+  <button id="load-button">Завантажити всі зображення</button>
+  <div class="image-container">
+    <img data-src="https://via.placeholder.com/800x600.png?text=Image+1" alt="Image 1">
+    <img data-src="https://via.placeholder.com/800x600.png?text=Image+2" alt="Image 2">
+    <img data-src="https://via.placeholder.com/800x600.png?text=Image+3" alt="Image 3">
+    <img data-src="https://via.placeholder.com/800x600.png?text=Image+4" alt="Image 4">
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
+

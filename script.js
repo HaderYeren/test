@@ -1,56 +1,24 @@
 
-import galleryItems from './gallery-items.js';
-
-const galleryContainer = document.querySelector('.js-gallery');
-const modal = document.querySelector('.js-lightbox');
-const modalImage = document.querySelector('.lightbox__image');
-const closeModalBtn = document.querySelector('[data-action="close-lightbox"]');
-const overlay = document.querySelector('.lightbox__overlay');
-
-const galleryMarkup = createGalleryMarkup(galleryItems);
-galleryContainer.insertAdjacentHTML('beforeend', galleryMarkup);
-
-function createGalleryMarkup(items) {
-  return items
-    .map(({ preview, original, description }) => {
-      return `<li class="gallery__item">
-                <a class="gallery__link" href="${original}">
-                  <img
-                    class="gallery__image"
-                    src="${preview}"
-                    data-source="${original}"
-                    alt="${description}"
-                  />
-                </a>
-              </li>`;
-    })
-    .join('');
+function loadImage(image) {
+  const src = image.getAttribute('data-src');
+  if (!src) return;
+  
+  image.src = src;
+  image.onload = () => image.classList.add('loaded');
 }
-
-galleryContainer.addEventListener('click', onGalleryItemClick);
-
-function onGalleryItemClick(event) {
-  event.preventDefault();
-  if (event.target.nodeName !== 'IMG') {
-    return;
-  }
-
-  modal.classList.add('is-open');
-  modalImage.src = event.target.dataset.source;
-  modalImage.alt = event.target.alt;
-}
-
-closeModalBtn.addEventListener('click', closeModal);
-overlay.addEventListener('click', closeModal);
-
-function closeModal() {
-  modal.classList.remove('is-open');
-  modalImage.src = '';
-  modalImage.alt = '';
-}
-
-window.addEventListener('keydown', (event) => {
-  if (event.code === 'Escape') {
-    closeModal();
-  }
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      loadImage(entry.target);
+      observer.unobserve(entry.target);
+    }
+  });
+});
+const images = document.querySelectorAll('img[data-src]');
+images.forEach(image => observer.observe(image));
+document.getElementById('load-button').addEventListener('click', () => {
+  images.forEach(image => {
+    loadImage(image);
+    observer.unobserve(image);
+  });
 });
