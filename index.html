@@ -3,19 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>test</title>
+  <title>Форма зворотного зв'язку</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Лінійне завантаження зображень</h1>
-  <button id="load-button">Завантажити всі зображення</button>
-  <div class="image-container">
-    <img data-src="https://via.placeholder.com/800x600.png?text=Image+1" alt="Image 1">
-    <img data-src="https://via.placeholder.com/800x600.png?text=Image+2" alt="Image 2">
-    <img data-src="https://via.placeholder.com/800x600.png?text=Image+3" alt="Image 3">
-    <img data-src="https://via.placeholder.com/800x600.png?text=Image+4" alt="Image 4">
+  <div class="form-container">
+    <form id="feedback-form">
+      <label for="name">Ім'я:</label>
+      <input type="text" id="name" name="name" required>
+      
+      <label for="email">Електронна пошта:</label>
+      <input type="email" id="email" name="email" required>
+      
+      <label for="message">Повідомлення:</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+      
+      <button type="submit">Відправити</button>
+    </form>
+    <div id="success-message" class="hidden">Ваше повідомлення успішно відправлено!</div>
   </div>
   <script src="script.js"></script>
 </body>
 </html>
+
 
