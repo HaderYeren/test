@@ -1,29 +1,39 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Форма зворотного зв'язку</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="form-container">
-    <form id="feedback-form">
-      <label for="name">Ім'я:</label>
-      <input type="text" id="name" name="name" required>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання</title>
+    <link rel="stylesheet" href="styles.css">
+    <body>
+      <h2>Список задач (ToDo List)</h2>
+      <input type="text" id="taskInput" placeholder="Нова задача">
+      <button onclick="addTask()">Додати</button>
+      <ul id="taskList"></ul>
       
-      <label for="email">Електронна пошта:</label>
-      <input type="email" id="email" name="email" required>
+      <h2>Форма збереження даних</h2>
+      <input type="text" id="nameInput" placeholder="Ім'я">
+      <input type="text" id="emailInput" placeholder="Email">
+      <button onclick="saveFormData()">Зберегти</button>
       
-      <label for="message">Повідомлення:</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
+      <h2>Авторизація</h2>
+      <input type="text" id="login" placeholder="Логін">
+      <input type="password" id="password" placeholder="Пароль">
+      <button onclick="registerUser()">Зареєструвати</button>
+      <button onclick="loginUser()">Увійти</button>
       
-      <button type="submit">Відправити</button>
-    </form>
-    <div id="success-message" class="hidden">Ваше повідомлення успішно відправлено!</div>
-  </div>
-  <script src="script.js"></script>
-</body>
-</html>
-
-
+      <h2>Закладки</h2>
+      <input type="text" id="bookmarkName" placeholder="Назва">
+      <input type="url" id="bookmarkUrl" placeholder="URL">
+      <button onclick="addBookmark()">Додати</button>
+      <ul id="bookmarkList"></ul>
+      
+      <h2>Контакти</h2>
+      <input type="text" id="contactName" placeholder="Ім'я">
+      <input type="text" id="contactPhone" placeholder="Телефон">
+      <input type="email" id="contactEmail" placeholder="Email">
+      <button onclick="addContact()">Додати</button>
+      <ul id="contactList"></ul>
+      <script src="script.js"></script>
+    </body>
+    </html>
