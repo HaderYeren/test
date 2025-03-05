@@ -1,39 +1,28 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Завдання</title>
-    <link rel="stylesheet" href="styles.css">
-    <body>
-      <h2>Список задач (ToDo List)</h2>
-      <input type="text" id="taskInput" placeholder="Нова задача">
-      <button onclick="addTask()">Додати</button>
-      <ul id="taskList"></ul>
-      
-      <h2>Форма збереження даних</h2>
-      <input type="text" id="nameInput" placeholder="Ім'я">
-      <input type="text" id="emailInput" placeholder="Email">
-      <button onclick="saveFormData()">Зберегти</button>
-      
-      <h2>Авторизація</h2>
-      <input type="text" id="login" placeholder="Логін">
-      <input type="password" id="password" placeholder="Пароль">
-      <button onclick="registerUser()">Зареєструвати</button>
-      <button onclick="loginUser()">Увійти</button>
-      
-      <h2>Закладки</h2>
-      <input type="text" id="bookmarkName" placeholder="Назва">
-      <input type="url" id="bookmarkUrl" placeholder="URL">
-      <button onclick="addBookmark()">Додати</button>
-      <ul id="bookmarkList"></ul>
-      
-      <h2>Контакти</h2>
-      <input type="text" id="contactName" placeholder="Ім'я">
-      <input type="text" id="contactPhone" placeholder="Телефон">
-      <input type="email" id="contactEmail" placeholder="Email">
-      <button onclick="addContact()">Додати</button>
-      <ul id="contactList"></ul>
-      <script src="script.js"></script>
-    </body>
-    </html>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Завдання 1 та 2</h1>
+  
+  <!-- Завдання 1 -->
+  <section>
+    <h2>Завдання 1: Порівняння кількох промісів</h2>
+    <button id="runAllPromises">Запустити всі проміси</button>
+    <div id="allPromisesResult"></div>
+  </section>
+  
+  <!-- Завдання 2 -->
+  <section>
+    <h2>Завдання 2: Змагання промісів</h2>
+    <button id="runRace">Запустити змагання промісів</button>
+    <div id="raceResult"></div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
