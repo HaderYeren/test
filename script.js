@@ -1,53 +1,60 @@
+import fetchCountries from './fetchCountries.js';
+const searchInput = document.getElementById('search');
+const notification = document.getElementById('notification');
+const countryList = document.getElementById('country-list');
+const countryInfo = document.getElementById('country-info');
 
-const delayedPromise = (value, delay) => {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve(value);
-    }, delay);
-  });
-};
 
-const promises = [
-  delayedPromise('Проміс 1', 3000),
-  delayedPromise('Проміс 2', 1000),
-  delayedPromise('Проміс 3', 2000),
-  delayedPromise('Проміс 4', 4000),
-  delayedPromise('Проміс 5', 500)
-];
+const debounceSearch = _.debounce((searchQuery) => {
+  console.log('Поисковый запрос:', searchQuery);
 
-const randomDelay = (value) => {
-  const delay = Math.floor(Math.random() * 4000) + 1000;
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve(`${value} виконано за ${delay} мс`);
-    }, delay);
-  });
-};
+  if (!searchQuery) {
+    countryList.innerHTML = '';
+    countryInfo.innerHTML = '';
+    notification.innerHTML = '';
+    return;
+  }
 
-const racePromises = [
-  randomDelay('Проміс 1'),
-  randomDelay('Проміс 2'),
-  randomDelay('Проміс 3'),
-  randomDelay('Проміс 4'),
-  randomDelay('Проміс 5')
-];
-document.getElementById('runAllPromises').addEventListener('click', () => {
-  Promise.all(promises)
-    .then(results => {
-      const resultDiv = document.getElementById('allPromisesResult');
-      resultDiv.innerHTML = `<h3>Результати всіх промісів:</h3><ul>${results.map(result => `<li>${result}</li>`).join('')}</ul>`;
+  fetchCountries(searchQuery)
+    .then(countries => {
+      console.log('Страны, полученные от API:', countries);
+
+      if (countries && countries.length > 10) {
+        notification.innerHTML = 'Найдено слишком много стран, уточните запрос.';
+        countryList.innerHTML = '';
+        countryInfo.innerHTML = '';
+      } else if (countries && countries.length > 1 && countries.length <= 10) {
+        notification.innerHTML = '';
+        countryList.innerHTML = countries.map(country => `<li>${country.name.common}</li>`).join('');
+        countryInfo.innerHTML = '';
+      } else if (countries && countries.length === 1) {
+        notification.innerHTML = '';
+        countryList.innerHTML = '';
+        const country = countries[0];
+        countryInfo.innerHTML = `
+          <h2>${country.name.common}</h2>
+          <p>Столица: ${country.capital}</p>
+          <p>Население: ${country.population}</p>
+          <p>Языки: ${Object.values(country.languages).join(', ')}</p>
+          <img src="${country.flags[0]}" alt="${country.name.common} flag" width="100">
+        `;
+      }
     })
     .catch(error => {
-      console.log('Помилка при виконанні промісів:', error);
+      notification.innerHTML = 'Ошибка при получении данных. Попробуйте снова позже.';
+      countryList.innerHTML = '';
+      countryInfo.innerHTML = '';
+      console.error('Ошибка при fetch запросе:', error);
     });
+}, 500);
+
+searchInput.addEventListener('input', (event) => {
+  const searchQuery = event.target.value;
+  debounceSearch(searchQuery);
 });
-document.getElementById('runRace').addEventListener('click', () => {
-  Promise.race(racePromises)
-    .then(result => {
-      const raceResultDiv = document.getElementById('raceResult');
-      raceResultDiv.innerHTML = `<h3>Найшвидший проміс:</h3><p>${result}</p>`;
-    })
-    .catch(error => {
-      console.log('Помилка при виконанні промісу:', error);
-    });
+
+countryList.addEventListener('click', (event) => {
+  const countryName = event.target.textContent;
+  searchInput.value = countryName;
+  debounceSearch(countryName);
 });
