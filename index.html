@@ -3,17 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Country Search</title>
+  <title>Pixabay Gallery</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <input type="text" id="search" placeholder="Search for a country...">
-  <div id="notification"></div>
-  <ul id="country-list"></ul>
-  <div id="country-info"></div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
-  <script type="module" src="script.js"></script>
-  <script type="module" src="fetchCountries.js"></script>
+  <div class="container">
+    <h1>Editor's Images</h1>
+    <div id="image-gallery" class="gallery"></div>
+    <button id="load-more-btn" class="load-more">Завантажити ще</button>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
